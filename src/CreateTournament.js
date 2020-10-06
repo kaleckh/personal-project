@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Bracket extends Component {
+class CreateTournament extends Component {
     render() {
         return(
             <div>yesssir</div>
@@ -8,4 +8,4 @@ class Bracket extends Component {
     }
 }
 
-export default Bracket;
+export default CreateTournament;

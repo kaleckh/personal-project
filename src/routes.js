@@ -1,7 +1,22 @@
+import React from "react"
 import { Switch, Route } from "react-router-dom";
-import routes from "../../Finished_projets/react-4-afternoon/src/routes";
-import bracket from "./bracket"
+import Bracket from "./Bracket";
+import Login from "./Login"
+import Home from "./Home"
+import CreateTournament from "./CreateTournament"
 
-<switch>
-<Route component={bracket} path="/tournament/:id"/>
-</switch>
+
+
+
+
+
+export default (
+  
+  <Switch>
+    <Route component={Bracket} exact path="/tournament/:id" />
+    <Route component={Login} path="/login" />
+    <Route component={Home} path="/home" />
+    <Route component={CreateTournament} path="/create" />
+  </Switch>
+
+);

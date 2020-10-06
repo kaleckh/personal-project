@@ -1,0 +1,26 @@
+body {
+    height: 100vh;
+}
+
+.loginBox {
+    height: 35vh;
+    width: 30vw;
+    background-color: black;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 200px;
+}
+
+.username {
+    margin-left: 525px;
+    background-color: white;
+}
+
+.login {
+    margin-left: 525px;
+}
+
+.usernameInput {
+    border: none;
+    border-bottom: 2px solid red;
+}
