@@ -1,29 +1,21 @@
 import React, { Component } from "react";
 import "./Home.css";
-
+import {connect} from "react-redux"
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       gameName: "Warzone",
-
-      tournaments: [
-        {
-          tournamentType: "Search and Destroy",
-          teamSize: 3,
-          enrolled: 0,
-          date: "june 19th",
-        },
-      ],
     };
   }
   createTournament = () => {
     this.props.history.push("/create");
-  }
+  };
   tournament = () => {
     this.props.history.push("/tournament/:id");
   };
   render() {
+    debugger
     return (
       <body>
         <div>
@@ -35,20 +27,25 @@ class Home extends Component {
             <button className="buttons">me</button>
           </div>
           <div>
-          <button onClick={() => {
-            this.createTournament()
-          }}>Create tournament</button>
+            <button
+              onClick={() => {
+                this.createTournament();
+              }}
+            >
+              Create tournament
+            </button>
           </div>
 
           <div>
             <div className="">
-              {this.state.tournaments.map((tournament) => {
+              {this.props.tournaments.map((tournament) => {
                 return (
                   <div>
                     {tournament.tournamentType}
                     <div>{tournament.teamSize}</div>
                     <div>{tournament.enrolled}</div>
                     <div>{tournament.date}</div>
+                  
                   </div>
                 );
               })}
@@ -66,4 +63,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    tournaments: state.tournaments,
+  };
+}
+
+// export default connect(mapStateToProps)(CreateTournament);
+
+export default connect(mapStateToProps)(Home);

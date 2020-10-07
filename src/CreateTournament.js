@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {createTournament} from "./ducks/reducer" 
 
 class CreateTournament extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameType: "gungame",
-      teamSize: 5,
-      date: "june 19th",
+      tournamentType: null,
+      teamSize: null,
+      date: null,
     };
   }
   render() {
@@ -18,31 +19,38 @@ class CreateTournament extends Component {
           <div>
             <label>Game type</label>{" "}
             <input
-              onClick={(event) => {
+              onChange={(event) => {
                 this.setState({
-                  gameType: this.state.gameType,
+                  tournamentType: event.target.value,
                 });
               }}
             />
             <label>Team size</label>{" "}
             <input
-              onClick={(event) => {
+              onChange={(event) => {
                 this.setState({
-                  teamSize: this.state.teamSize,
+                  teamSize: event.target.value,
                 });
               }}
             />
             <label>Date</label>
             <input
-              onClick={(event) => {
+              onChange={(event) => {
                 this.setState({
-                  date: this.state.date,
+                  date: event.target.value,
                 });
               }}
             />
             <button
               onClick={() => {
-                console.log(this.state);
+                
+                this.props.createTournament({
+                  tournamentType: this.state.tournamentType,
+                  teamSize: this.state.teamSize,
+                  enrolled: 0,
+                  date: this.state.date
+                })
+                this.props.history.push("/home");
               }}
             >
               Save
@@ -55,12 +63,14 @@ class CreateTournament extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("TESTSET", state);
   return {
     username: state.username,
   };
 }
 
-// export default connect(mapStateToProps)(CreateTournament);
+const mapDispatchToProps = {
+  createTournament
+}
 
-export default connect(mapStateToProps)(CreateTournament);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTournament);
