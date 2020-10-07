@@ -3,15 +3,26 @@ import "./Home.css";
 
 class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      gameName: "Warzone"
+      gameName: "Warzone",
 
-    } 
+      tournaments: [
+        {
+          tournamentType: "Search and Destroy",
+          teamSize: 3,
+          enrolled: 0,
+          date: "june 19th",
+        },
+      ],
+    };
   }
-   tournament = () => {
+  createTournament = () => {
+    this.props.history.push("/create");
+  }
+  tournament = () => {
     this.props.history.push("/tournament/:id");
-  }
+  };
   render() {
     return (
       <body>
@@ -20,18 +31,35 @@ class Home extends Component {
             <div className="gameType"> {this.state.gameName} </div>
           </div>
           <div style={{ display: "flex" }}>
-            <button  className="buttons">them</button>
+            <button className="buttons">them</button>
             <button className="buttons">me</button>
+          </div>
+          <div>
+          <button onClick={() => {
+            this.createTournament()
+          }}>Create tournament</button>
           </div>
 
           <div>
-            <div className="link"></div>
-            <button onClick={() => {
-              this.tournament()
-            }} className="tournament">tournament</button>
+            <div className="">
+              {this.state.tournaments.map((tournament) => {
+                return (
+                  <div>
+                    {tournament.tournamentType}
+                    <div>{tournament.teamSize}</div>
+                    <div>{tournament.enrolled}</div>
+                    <div>{tournament.date}</div>
+                  </div>
+                );
+              })}
+              <button
+                onClick={() => {
+                  this.tournament();
+                }}
+                className="tournamentType"
+              ></button>
+            </div>
           </div>
-          <div className="link2"></div>
-          <div className="link3"></div>
         </div>
       </body>
     );

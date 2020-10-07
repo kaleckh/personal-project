@@ -3,6 +3,12 @@ import "./Login.css";
 import Popup from "./Popup";
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPopup: false,
+    };
+  }
   login = () => {
     this.props.history.push("/home");
   };
@@ -16,29 +22,45 @@ class Login extends Component {
         <div>
           {this.state.showPopup && (
             <Popup
-              text={"registered"}
+              text={"You have succesfully registered!"}
               closePopup={() => {
-                console.log("closed");
+                this.setState({
+                  showPopup: false,
+                });
+                this.register();
               }}
             />
           )}
-          <div className="loginBox"></div>
-          <div className="username">
-            <input className="usernameInput" type="text" />
-            <input type="text" />
-          </div>
-          <div className="login">
+          <div className="loginBox">
+            <div className="inputs">
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="username..."
+              />
+              <input
+                type="text"
+                id="password"
+                name="password"
+                placeholder="password..."
+              />
+            </div>
+
             <button
+              className="login"
               onClick={() => {
                 this.login();
               }}
             >
               login
             </button>
-
             <button
+              className="register"
               onClick={() => {
-                this.register();
+                this.setState({
+                  showPopup: true,
+                });
               }}
             >
               register
