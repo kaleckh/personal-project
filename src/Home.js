@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class Home extends Component {
     this.props.history.push("/tournament/:id");
   };
   render() {
-    debugger
+    debugger;
     return (
       <body>
         <div>
@@ -36,26 +36,25 @@ class Home extends Component {
             </button>
           </div>
 
-          <div>
-            <div className="">
-              {this.props.tournaments.map((tournament) => {
-                return (
-                  <div>
-                    {tournament.tournamentType}
-                    <div>{tournament.teamSize}</div>
-                    <div>{tournament.enrolled}</div>
-                    <div>{tournament.date}</div>
-                  
-                  </div>
-                );
-              })}
-              <button
-                onClick={() => {
-                  this.tournament();
-                }}
-                className="tournamentType"
-              ></button>
-            </div>
+          <div className="">
+            {this.props.tournaments.map((tournament, index) => {
+              return (
+                <div onClick={() => {
+                  this.props.history.push(`/tournament/${index}`);
+                }}>
+                  {tournament.tournamentType}
+                  <div>{tournament.teamSize}</div>
+                  <div>{tournament.enrolled}</div>
+                  <div>{tournament.date}</div>
+                </div>
+              );
+            })}
+            <button
+              onClick={() => {
+                this.tournament();
+              }}
+              className="tournamentType"
+            ></button>
           </div>
         </div>
       </body>
