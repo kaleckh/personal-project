@@ -17,6 +17,7 @@ class CreateTournament extends Component {
         {this.props.username}
         <div className="newBox">
           <div>
+            
             <label>Game type</label>{" "}
             <input
               onChange={(event) => {

@@ -1,15 +1,27 @@
 let getAll = (req, res) => {
-    const dbInstance = req.app.get("db");
-  
-    dbInstance
-      .read_products()
-      .then((products) => res.status(200).send(products))
-      .catch((err) => {
-        res.status(500).send({
-          errorMessage:
-            "Oops! Something went wrong. Our engineers have been informed!",
-        });
-        console.log(err);
-      });
-  };
-  
+  res.json([
+    {
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th",
+    },
+  ]);
+  const dbInstance = req.app.get("db");
+};
+
+let deleteTournament = (req, res) => {
+  const dbInstance = req.app.get("db");
+};
+
+let createTournament = (req, res) => {
+  const dbInstance = req.app.get("db");
+};
+
+let createUser = () => {
+  const dbInstance = req.app.get("db");
+};
+
+module.exports = {
+  getAll,
+};

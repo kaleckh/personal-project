@@ -3,8 +3,10 @@ const express = require("express");
 const massive = require("massive")
 const app = express();
 app.use(express.json())
-
+var {getAll} = require("./controller")
 const { PORT = 3001, CONNECTION_STRING } = process.env;
+const cors = require("cors")
+app.use(cors())
 
 
 
@@ -23,5 +25,7 @@ app.get("/test", (req, res) => {
         test: "test"
     })
 })
+
+app.get("/tournaments", getAll);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

@@ -1,26 +1,19 @@
 const UPDATE_USER = "UPDATE_USER";
 const CREATE_POST = "CREATE_POST";
-const CREATE_TOURNAMENT = "CREATE_TOURNAMENT"
+const CREATE_TOURNAMENT = "CREATE_TOURNAMENT";
 var initialState = {
   username: "kaleck",
-  tournaments: [
-    {
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    },
-  ],
+  tournaments: [],
 };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case CREATE_TOURNAMENT: 
+    case CREATE_TOURNAMENT:
       let tournaments = state.tournaments;
-      tournaments.push(action.payload.tournament)
+      tournaments.push(action.payload.tournament);
       return {
         ...state,
-        tournaments: tournaments
-      }
+        tournaments: tournaments,
+      };
     case UPDATE_USER:
       return {
         ...state,
@@ -62,8 +55,8 @@ function createTournament(tournament) {
   return {
     type: CREATE_TOURNAMENT,
     payload: {
-     tournament: tournament
+      tournament: tournament,
     },
   };
 }
-export { updateUser, createTournament};
+export { updateUser, createTournament };

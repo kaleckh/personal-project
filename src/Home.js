@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
+import axios from "axios";
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameName: "Warzone",
+      gameName: "",
     };
   }
   createTournament = () => {
@@ -14,8 +15,15 @@ class Home extends Component {
   tournament = () => {
     this.props.history.push("/tournament/:id");
   };
+  componentDidMount() {
+    axios({
+      url: "http://localhost:3001/tournaments",
+      method: "get",
+    }).then((res) => {
+      debugger;
+    });
+  }
   render() {
-    debugger;
     return (
       <body>
         <div>
@@ -31,6 +39,7 @@ class Home extends Component {
               onClick={() => {
                 this.createTournament();
               }}
+              className="createButton"
             >
               Create tournament
             </button>
@@ -39,22 +48,22 @@ class Home extends Component {
           <div className="">
             {this.props.tournaments.map((tournament, index) => {
               return (
-                <div onClick={() => {
-                  this.props.history.push(`/tournament/${index}`);
-                }}>
-                  {tournament.tournamentType}
-                  <div>{tournament.teamSize}</div>
+                <div
+                  className="link"
+                  onClick={() => {
+                    this.props.history.push(`/tournament/${index}`);
+                  }}
+                >
+                  <div className="type">
+                    {tournament.teamSize} {tournament.tournamentType}
+                  </div>
+                  <div>Teams enrolled</div>
                   <div>{tournament.enrolled}</div>
+                  <div>Date</div>
                   <div>{tournament.date}</div>
                 </div>
               );
             })}
-            <button
-              onClick={() => {
-                this.tournament();
-              }}
-              className="tournamentType"
-            ></button>
           </div>
         </div>
       </body>
