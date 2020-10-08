@@ -1,6 +1,7 @@
 const UPDATE_USER = "UPDATE_USER";
 const CREATE_POST = "CREATE_POST";
 const CREATE_TOURNAMENT = "CREATE_TOURNAMENT";
+const UPDATE_TOURNAMENTS = "UPDATE_TOURNAMENTS"
 var initialState = {
   username: "kaleck",
   tournaments: [],
@@ -26,10 +27,18 @@ export default function reducer(state = initialState, action) {
         ...state,
         posts: [...state.posts, action.payload.post],
       };
+    case UPDATE_TOURNAMENTS:
+      return {
+        ...state,
+        tournaments: action.payload.tournaments
+      }
     default:
       return state;
+
   }
+
 }
+
 
 function updateUser(id, username, profilePic) {
   return {
@@ -59,4 +68,12 @@ function createTournament(tournament) {
     },
   };
 }
-export { updateUser, createTournament };
+function updateTournaments(tournaments){
+  return{
+    type: UPDATE_TOURNAMENTS,
+    payload: {
+      tournaments: tournaments
+    }
+  }
+}
+export { updateUser, createTournament, updateTournaments };

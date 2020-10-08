@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
 import axios from "axios";
+import { updateTournaments } from "./ducks/reducer";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class Home extends Component {
       url: "http://localhost:3001/tournaments",
       method: "get",
     }).then((res) => {
-      debugger;
+      this.props.updateTournaments(res.data);
     });
   }
   render() {
@@ -76,7 +77,8 @@ function mapStateToProps(state) {
     tournaments: state.tournaments,
   };
 }
+const mapDispatchToProps = {
+  updateTournaments,
+};
 
-// export default connect(mapStateToProps)(CreateTournament);
-
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
