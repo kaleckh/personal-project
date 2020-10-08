@@ -16,6 +16,8 @@ let deleteTournament = (req, res) => {
 
 let createTournament = (req, res) => {
   const dbInstance = req.app.get("db");
+  const body = req.body;
+  res.json(body);
 };
 
 let createUser = () => {
@@ -24,4 +26,5 @@ let createUser = () => {
 
 module.exports = {
   getAll,
+  createTournament,
 };

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {createTournament} from "./ducks/reducer" 
+import { createTournament } from "./ducks/reducer";
+
+import axios from "axios";
 
 class CreateTournament extends Component {
   constructor(props) {
@@ -17,7 +19,6 @@ class CreateTournament extends Component {
         {this.props.username}
         <div className="newBox">
           <div>
-            
             <label>Game type</label>{" "}
             <input
               onChange={(event) => {
@@ -44,14 +45,26 @@ class CreateTournament extends Component {
             />
             <button
               onClick={() => {
-                
-                this.props.createTournament({
-                  tournamentType: this.state.tournamentType,
-                  teamSize: this.state.teamSize,
-                  enrolled: 0,
-                  date: this.state.date
-                })
-                this.props.history.push("/home");
+                axios({
+                  method: "post",
+                  url: "http://localhost:3001/tournaments",
+                  data: {
+                    tournamentType: this.state.tournamentType,
+                    teamSize: this.state.teamSize,
+                    enrolled: 0,
+                    date: this.state.date,
+                  }
+                }).then((res) => {
+                  
+                  let tournament = res.data
+                  this.props.createTournament({
+                    tournamentType: tournament.tournamentType,
+                    teamSize: tournament.teamSize,
+                    enrolled: tournament.enrolled,
+                    date: tournament.date,
+                  });
+                  this.props.history.push("/home");
+                });
               }}
             >
               Save
@@ -70,8 +83,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  createTournament
-}
-
+  createTournament,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTournament);
