@@ -76,3 +76,25 @@ body {
     width: calc(100% - 35px);
     margin-bottom: 2px;
 }
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.gridItem {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+@media (max-width: 710px) {
+    .gridContainer {
+        grid-template-columns: auto
+    }
+}

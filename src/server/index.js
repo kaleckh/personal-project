@@ -3,7 +3,7 @@ const express = require("express");
 const massive = require("massive")
 const app = express();
 app.use(express.json())
-var {getAll, createTournament} = require("./controller")
+var {getAll, createTournament, deleteTournament} = require("./controller")
 const { PORT = 3001, CONNECTION_STRING } = process.env;
 const cors = require("cors");
 app.use(cors())
@@ -29,5 +29,6 @@ app.get("/test", (req, res) => {
 
 app.get("/tournaments", getAll);
 app.post("/tournaments", createTournament)
+app.delete("/tournaments", deleteTournament)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

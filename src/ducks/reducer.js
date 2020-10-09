@@ -2,6 +2,7 @@ const UPDATE_USER = "UPDATE_USER";
 const CREATE_POST = "CREATE_POST";
 const CREATE_TOURNAMENT = "CREATE_TOURNAMENT";
 const UPDATE_TOURNAMENTS = "UPDATE_TOURNAMENTS";
+const DELETE_TOURNAMENT = "DELETE_TOURNAMENT"
 var initialState = {
   username: "kaleck",
   tournaments: [],
@@ -34,6 +35,14 @@ export default function reducer(state = initialState, action) {
         ...state,
         tournaments: action.payload.tournaments,
       };
+    case DELETE_TOURNAMENT:
+      let tournamentss = state.tournaments
+      let filteredTournaments = tournamentss.splice(action.payload.tournamentIndex, 1)
+      return {
+        ...state, tournamentss: filteredTournaments
+
+
+      }
     default:
       return state;
   }
@@ -67,4 +76,12 @@ function updateTournaments(tournaments) {
     },
   };
 }
-export { updateUser, createTournament, updateTournaments };
+function deleteTournament(tournamentIndex) {
+  return {
+    type: DELETE_TOURNAMENT,
+    payload: {
+      tournamentIndex: tournamentIndex
+    }
+  }
+}
+export { updateUser, createTournament, updateTournaments, deleteTournament };

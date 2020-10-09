@@ -5,7 +5,32 @@ let getAll = (req, res) => {
       teamSize: 3,
       enrolled: 0,
       date: "june 19th",
-    },
+    },{
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th", 
+    },{
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th",
+    },{
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th",
+    },{
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th",
+    },{
+      tournamentType: "Search and Destroy",
+      teamSize: 3,
+      enrolled: 0,
+      date: "june 19th",
+    }
   ]);
   const dbInstance = req.app.get("db");
 };
@@ -27,4 +52,5 @@ let createUser = () => {
 module.exports = {
   getAll,
   createTournament,
+  deleteTournament
 };

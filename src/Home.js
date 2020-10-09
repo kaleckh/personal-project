@@ -46,22 +46,35 @@ class Home extends Component {
             </button>
           </div>
 
-          <div className="">
+          <div className="gridContainer">
             {this.props.tournaments.map((tournament, index) => {
               return (
-                <div
-                  className="link"
-                  onClick={() => {
-                    this.props.history.push(`/tournament/${index}`);
-                  }}
-                >
-                  <div className="type">
-                    {tournament.teamSize} {tournament.tournamentType}
+                <div className="gridItem">
+                  <div
+                    className="link"
+                    onClick={() => {
+                      this.props.history.push(`/tournament/${index}`);
+                    }}
+                  >
+                    <div className="type">
+                      {tournament.teamSize} {tournament.tournamentType}
+                    </div>
+                    <div>Teams enrolled</div>
+                    <div>{tournament.enrolled}</div>
+                    <div>Date</div>
+                    <div>{tournament.date}</div>
                   </div>
-                  <div>Teams enrolled</div>
-                  <div>{tournament.enrolled}</div>
-                  <div>Date</div>
-                  <div>{tournament.date}</div>
+                  <button
+                    onClick={() => {
+                      axios({
+                        method: "delete",
+                        url: "http://localhost:3001/tournaments",
+                        data: {},
+                      }).then((res) => {});
+                    }}
+                  >
+                    delete
+                  </button>
                 </div>
               );
             })}
