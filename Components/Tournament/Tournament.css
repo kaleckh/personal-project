@@ -1,0 +1,40 @@
+body {
+    background-color: grey;
+    padding: 20px;
+}
+
+.tournament {
+    display: flex;
+}
+
+.tournament>*:not(:first-child) {
+    margin-left: 50px;
+}
+
+
+/* .round > * { */
+
+
+/* margin-bottom: 50px; */
+
+
+/* } */
+
+.bracket {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.bracket>*:first-child {
+    margin-bottom: 5px;
+}
+
+.player-game {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    height: 20px;
+    ;
+    opacity: 1;
+    padding: 5px 3px;
+}

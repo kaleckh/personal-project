@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
 import axios from "axios";
-import { updateTournaments } from "./ducks/reducer";
+import { updateTournaments, deleteTournament } from "./ducks/reducer";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -68,9 +68,10 @@ class Home extends Component {
                     onClick={() => {
                       axios({
                         method: "delete",
-                        url: "http://localhost:3001/tournaments",
-                        data: {},
-                      }).then((res) => {});
+                        url: "http://localhost:3001/tournaments/ADD_ID",
+                      }).then((res) => {
+                        this.props.deleteTournament(index);
+                      });
                     }}
                   >
                     delete
@@ -86,12 +87,14 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
+  debugger
   return {
     tournaments: state.tournaments,
   };
 }
 const mapDispatchToProps = {
   updateTournaments,
+  deleteTournament,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
