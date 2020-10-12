@@ -76,6 +76,9 @@ class Home extends Component {
                   >
                     delete
                   </button>
+                  <button onClick={() => {
+                    
+                  }}>Enroll</button>
                 </div>
               );
             })}
