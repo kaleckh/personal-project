@@ -3,6 +3,7 @@ import "./Home.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import { updateTournaments, deleteTournament } from "../ducks/reducer";
+import Button from "./Button"
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -32,8 +33,8 @@ class Home extends Component {
             <div className="gameType"> {this.state.gameName} </div>
           </div>
           <div style={{ display: "flex" }}>
-            <button className="buttons">them</button>
-            <button className="buttons">me</button>
+            <Button>them</Button>
+            <Button>me</Button>
           </div>
           <div>
             <button
@@ -77,7 +78,7 @@ class Home extends Component {
                     delete
                   </button>
                   <button onClick={() => {
-                    
+
                   }}>Enroll</button>
                 </div>
               );

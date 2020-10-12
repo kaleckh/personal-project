@@ -1,6 +1,6 @@
 import React from "react";
 
-import  Button  from "./Button";
+import Button from "./Button";
 
 export default {
   title: "Example/Button",
@@ -9,7 +9,7 @@ export default {
 export const defaultButton = () => {
   return (
     <div>
-      <Button></Button>
+      <Button>testing</Button>
     </div>
   );
 };
