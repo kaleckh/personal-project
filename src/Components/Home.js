@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
 import axios from "axios";
-import { updateTournaments, deleteTournament } from "./ducks/reducer";
+import { updateTournaments, deleteTournament } from "../ducks/reducer";
 class Home extends Component {
   constructor(props) {
     super(props);

@@ -1,9 +1,9 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom";
-import Bracket from "./Bracket";
-import Login from "./Login"
-import Home from "./Home"
-import CreateTournament from "./CreateTournament"
+import Bracket from "./Components/Bracket";
+import Login from "./Components/Login"
+import Home from "./Components/Home"
+import CreateTournament from "./Components/CreateTournament"
 
 
 

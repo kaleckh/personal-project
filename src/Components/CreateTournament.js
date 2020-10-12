@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createTournament } from "./ducks/reducer";
+import { createTournament } from "../ducks/reducer";
 
 import axios from "axios";
 
