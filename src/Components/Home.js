@@ -91,7 +91,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  debugger
+  
   return {
     tournaments: state.tournaments,
   };

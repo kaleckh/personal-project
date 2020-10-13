@@ -59,6 +59,7 @@ function updateUser(id, username, profilePic) {
 }
 
 function createTournament(tournament) {
+  
   return {
     type: CREATE_TOURNAMENT,
     payload: {

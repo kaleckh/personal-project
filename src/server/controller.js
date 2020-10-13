@@ -1,37 +1,38 @@
+var mock = [
+  {
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th", 
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+  }
+]
 let getAll = (req, res) => {
-  res.json([
-    {
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    },{
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th", 
-    },{
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    },{
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    },{
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    },{
-      tournamentType: "Search and Destroy",
-      teamSize: 3,
-      enrolled: 0,
-      date: "june 19th",
-    }
-  ]);
+  res.json(mock);
   const dbInstance = req.app.get("db");
 };
 
@@ -42,7 +43,8 @@ let deleteTournament = (req, res) => {
 
 let createTournament = (req, res) => {
   const dbInstance = req.app.get("db");
-  const body = req.body;
+  const body = req.body; 
+  mock.push(body)
   res.json(body);
 };
 

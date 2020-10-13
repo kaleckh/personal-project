@@ -2,7 +2,6 @@ body {
     height: 100%;
 }
 
-.newBox {
-    height: 50px;
-    background-color: white;
+label {
+    color: white;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createTournament } from "../ducks/reducer";
-
+import "./Createtournament.css";
 import axios from "axios";
 
 class CreateTournament extends Component {
@@ -9,7 +9,7 @@ class CreateTournament extends Component {
     super(props);
     this.state = {
       tournamentType: null,
-      teamSize: null,
+      teamName: null,
       date: null,
     };
   }
@@ -27,11 +27,11 @@ class CreateTournament extends Component {
                 });
               }}
             />
-            <label>Team size</label>{" "}
+            <label>Team names</label>{" "}
             <input
               onChange={(event) => {
                 this.setState({
-                  teamSize: event.target.value,
+                  teamName: event.target.value.split(" "),
                 });
               }}
             />
@@ -45,21 +45,22 @@ class CreateTournament extends Component {
             />
             <button
               onClick={() => {
+                
                 axios({
                   method: "post",
                   url: "http://localhost:3001/tournaments",
                   data: {
                     tournamentType: this.state.tournamentType,
-                    teamSize: this.state.teamSize,
+                    teamName: this.state.teamName,
                     enrolled: 0,
                     date: this.state.date,
-                  }
+                  },
+
                 }).then((res) => {
-                  
-                  let tournament = res.data
+                  let tournament = res.data;
                   this.props.createTournament({
                     tournamentType: tournament.tournamentType,
-                    teamSize: tournament.teamSize,
+                    teamName: tournament.teamName,
                     enrolled: tournament.enrolled,
                     date: tournament.date,
                   });
