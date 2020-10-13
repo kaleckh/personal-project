@@ -6,7 +6,7 @@ class Bracket extends Component {
     render() {
         var tournament = this.props.tournaments[this.props.match.params.id]
         return(
-            <div><Tournament></Tournament></div>
+            <div><Tournament players={tournament.teamName}/></div>
         )
     }
 }

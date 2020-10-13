@@ -7,7 +7,7 @@ import { createFirstRound, createRoundTemplates } from "./utils";
 
 const mock = ["Jason", "Kaleck", "Austin", "Neely", "Brooklyn", "Tristan", "Bryson", "Aliece", "Jason", "Kaleck", "Austin", "Neely", "Brooklyn", "Tristan", "Bryson", "Aliece", "Jason", "Kaleck", "Austin", "Neely", "Brooklyn", "Tristan", "Bryson", "Aliece", "Jason", "Kaleck", "Austin", "Neely", "Brooklyn", "Tristan", "Bryson", "Aliece"];
 
-const Tournament = ({ players = mock }) => {
+const Tournament = ({ players }) => {
 
     let firstRound = createFirstRound(players)
     let rounds = createRoundTemplates(firstRound);
