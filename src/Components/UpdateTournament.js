@@ -1,7 +1,8 @@
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios"
+import axios from "axios";
+import { updateTournament } from "../ducks/reducer";
 
 class UpdateTournament extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class UpdateTournament extends Component {
         />
         <button
           onClick={() => {
+              
             axios({
               method: "put",
               url: `http://localhost:3001/tournaments/${this.props.match.params.id}`,
@@ -50,8 +52,10 @@ class UpdateTournament extends Component {
                 date: this.state.date,
               },
             }).then((res) => {
+                
               let tournament = res.data;
               this.props.updateTournament({
+                id: this.props.match.params.id,
                 tournamentType: tournament.tournamentType,
                 teamName: tournament.teamName,
 
@@ -72,4 +76,8 @@ function mapStateToProps(state) {
     tournaments: state.tournaments,
   };
 }
-export default connect(mapStateToProps)(UpdateTournament);
+const mapDispatchToProps = {
+  updateTournament,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateTournament);

@@ -59,10 +59,15 @@ let createUser = (req, res) => {
   const body = req.body;
   res.json(body)
 };
-
+let updateTournament = (req, res) => {
+  const dbInstance = req.app.get("db");
+  const body = req.body;
+  res.json(body)
+}
 module.exports = {
   getAll,
   createTournament,
   deleteTournament,
-  createUser
+  createUser,
+  updateTournament
 };

@@ -36,9 +36,22 @@ export default function reducer(state = initialState, action) {
         tournaments: action.payload.tournaments,
       };
     case UPDATE_TOURNAMENT:
+      
+      let tournament = action.payload.tournament
+      let ts = state.tournaments
       return {
         ...state,
-        tournaments: action.payload.tournaments
+        tournaments: ts.map((t, index) => {
+      
+
+          if(tournament.id == index) {
+            return tournament 
+          } else {
+            return t
+          }
+        })
+
+
       }
     case DELETE_TOURNAMENT:
       let tournamentss = [...state.tournaments];
@@ -85,6 +98,7 @@ function updateTournament(tournament) {
     type: UPDATE_TOURNAMENT,
     payload: {
       tournament: tournament,
+    
     },
   };
 }
