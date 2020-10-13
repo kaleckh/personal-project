@@ -3,7 +3,7 @@ import "./Home.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import { updateTournaments, deleteTournament } from "../ducks/reducer";
-import Button from "./Button"
+import Button from "./Button";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +14,10 @@ class Home extends Component {
   createTournament = () => {
     this.props.history.push("/create");
   };
-  tournament = () => {
-    this.props.history.push("/tournament/:id");
+  updateTournament = (index) => {
+    this.props.history.push(`/update/${index}`);
   };
+
   componentDidMount() {
     axios({
       url: "http://localhost:3001/tournaments",
@@ -77,9 +78,13 @@ class Home extends Component {
                   >
                     delete
                   </button>
-                  <button onClick={() => {
-
-                  }}>Enroll</button>
+                  <button
+                    onClick={() => {
+                      this.updateTournament(index);
+                    }}
+                  >
+                    update
+                  </button>
                 </div>
               );
             })}
@@ -91,7 +96,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  
   return {
     tournaments: state.tournaments,
   };

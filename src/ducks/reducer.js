@@ -3,7 +3,8 @@ const CREATE_POST = "CREATE_POST";
 const CREATE_TOURNAMENT = "CREATE_TOURNAMENT";
 const UPDATE_TOURNAMENTS = "UPDATE_TOURNAMENTS";
 const DELETE_TOURNAMENT = "DELETE_TOURNAMENT";
-const CREATE_USER = "CREATE_USER"
+const CREATE_USER = "CREATE_USER";
+const UPDATE_TOURNAMENT = "UPDATE_TOURNAMENT";
 var initialState = {
   username: "kaleck",
   tournaments: [],
@@ -34,6 +35,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         tournaments: action.payload.tournaments,
       };
+    case UPDATE_TOURNAMENT:
+      return {
+        ...state,
+        tournaments: action.payload.tournaments
+      }
     case DELETE_TOURNAMENT:
       let tournamentss = [...state.tournaments];
       tournamentss.splice(action.payload.tournamentIndex, 1);
@@ -59,7 +65,6 @@ function updateUser(id, username, profilePic) {
 }
 
 function createTournament(tournament) {
-  
   return {
     type: CREATE_TOURNAMENT,
     payload: {
@@ -72,6 +77,14 @@ function updateTournaments(tournaments) {
     type: UPDATE_TOURNAMENTS,
     payload: {
       tournaments: tournaments,
+    },
+  };
+}
+function updateTournament(tournament) {
+  return {
+    type: UPDATE_TOURNAMENT,
+    payload: {
+      tournament: tournament,
     },
   };
 }
@@ -89,4 +102,11 @@ function createUser(username, id) {
     payload: { username, id },
   };
 }
-export { updateUser, createTournament, updateTournaments, deleteTournament, createUser };
+export {
+  updateUser,
+  createTournament,
+  updateTournaments,
+  deleteTournament,
+  createUser,
+  updateTournament,
+};

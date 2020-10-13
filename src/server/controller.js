@@ -4,31 +4,37 @@ var mock = [
     teamSize: 3,
     enrolled: 0,
     date: "june 19th",
-  },{
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th", 
-  },{
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
+    teamName: ["kale", "michael", "hamm"]
   },{
     tournamentType: "Search and Destroy",
     teamSize: 3,
     enrolled: 0,
     date: "june 19th",
+    teamName: ["kale", "michael", "hamm"] 
   },{
     tournamentType: "Search and Destroy",
     teamSize: 3,
     enrolled: 0,
     date: "june 19th",
+    teamName: ["kale", "michael", "hamm"]
   },{
     tournamentType: "Search and Destroy",
     teamSize: 3,
     enrolled: 0,
     date: "june 19th",
+    teamName: ["kale", "michael", "hamm"]
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+    teamName: ["kale", "michael", "hamm"]
+  },{
+    tournamentType: "Search and Destroy",
+    teamSize: 3,
+    enrolled: 0,
+    date: "june 19th",
+    teamName: ["kale", "michael", "hamm"]
   }
 ]
 let getAll = (req, res) => {
