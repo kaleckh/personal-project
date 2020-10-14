@@ -1,1 +1,1 @@
-INSERT INTO tournaments ( tournaments, gameType, teamName, date ) VALUES ( setval('posts_post_id_seq', (SELECT MAX(post_id) FROM posts)+1), $1, $2, $3) RETURNING post_id, name, image, content;
+INSERT INTO tournament ( tournament_type, date) VALUES ( $1, $2) RETURNING id, tournament_type, date;

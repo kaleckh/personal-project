@@ -88,7 +88,7 @@ let createTournament = (req, res) => {
 
   var body = req.body;
   dbInstance
-    .create_tournament([body.gameType, body.teameName, body.date])
+    .create_tournament([body.tournamentType, body.date])
     .then((tournament) => res.status(200).send(tournament))
     .catch((err) => {
       res.status(500).send({

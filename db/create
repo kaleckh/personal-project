@@ -1,0 +1,8 @@
+create table tournament
+(
+    id serial not null
+        constraint tournaments_pkey
+            primary key,
+    tournament_type varchar(120),
+    date varchar(24)
+);
