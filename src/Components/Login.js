@@ -84,7 +84,7 @@ class Login extends Component {
                   this.props.createUser(res.data.username, res.data.id)
                   // let tournament = res.data
                   // this.props.createTournament({
-                  //   tournamentType: tournament.tournamentType,
+                  //   type: tournament.type,
                   //   teamSize: tournament.teamSize,
                   //   enrolled: tournament.enrolled,
                   //   date: tournament.date,

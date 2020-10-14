@@ -59,7 +59,7 @@ class Home extends Component {
                     }}
                   >
                     <div className="type">
-                      {tournament.teamSize} {tournament.tournamentType}
+                      {tournament.teamSize} {tournament.type}
                     </div>
                     <div>Teams enrolled</div>
                     <div>{tournament.enrolled}</div>

@@ -15,10 +15,10 @@ class UpdateTournament extends Component {
         <input
           onChange={(event) => {
             this.setState({
-              tournamentType: event.target.value,
+              type: event.target.value,
             });
           }}
-          defaultValue={tournament.tournamentType}
+          defaultValue={tournament.type}
           type="text"
         />
         <input
@@ -46,7 +46,7 @@ class UpdateTournament extends Component {
               method: "put",
               url: `http://localhost:3001/tournaments/${this.props.match.params.id}`,
               data: {
-                tournamentType: this.state.tournamentType,
+                type: this.state.type,
                 teamName: this.state.teamName,
 
                 date: this.state.date,
@@ -56,7 +56,7 @@ class UpdateTournament extends Component {
               let tournament = res.data;
               this.props.updateTournament({
                 id: this.props.match.params.id,
-                tournamentType: tournament.tournamentType,
+                type: tournament.type,
                 teamName: tournament.teamName,
 
                 date: tournament.date,

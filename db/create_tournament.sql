@@ -1,1 +1,1 @@
-INSERT INTO tournament ( tournament_type, date) VALUES ( $1, $2) RETURNING id, tournament_type, date;
+INSERT INTO tournament ( type, date) VALUES ( $1, $2) RETURNING id, type, date;

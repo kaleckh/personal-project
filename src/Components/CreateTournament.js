@@ -6,7 +6,7 @@ import axios from "axios";
 
 function CreateTournament({ history }) {
   let [teamName, setTeamName] = useState();
-  let [tournamentType, setTournamentType] = useState();
+  let [type, setType] = useState();
   let [date, setDate] = useState();
   let dispatch = useDispatch();
   let username = useSelector((state) => state.username);
@@ -18,7 +18,7 @@ function CreateTournament({ history }) {
           <label>Game type</label>{" "}
           <input
             onChange={(event) => {
-              setTournamentType(event.target.value);
+              setType(event.target.value);
             }}
           />
           <label>Team names</label>{" "}
@@ -39,7 +39,7 @@ function CreateTournament({ history }) {
                 method: "post",
                 url: "http://localhost:3001/tournaments",
                 data: {
-                  tournamentType: tournamentType,
+                  type: type,
                   teamName: teamName,
                   enrolled: 0,
                   date: date,
@@ -49,7 +49,7 @@ function CreateTournament({ history }) {
 
                 dispatch(
                   createTournament({
-                    tournamentType: tournament.tournamentType,
+                    type: tournament.type,
                     teamName: tournament.teamName,
                     enrolled: tournament.enrolled,
                     date: tournament.date,
