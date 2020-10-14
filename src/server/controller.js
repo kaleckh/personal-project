@@ -1,52 +1,18 @@
 const bcrypt = require("bcrypt");
 
-var mock = [
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-  {
-    tournamentType: "Search and Destroy",
-    teamSize: 3,
-    enrolled: 0,
-    date: "june 19th",
-    teamName: ["kale", "michael", "hamm"],
-  },
-];
 let getAll = (req, res) => {
-  res.json(mock);
   const dbInstance = req.app.get("db");
+
+  dbInstance
+    .read_tournaments()
+    .then((tournaments) => res.status(200).send(tournaments))
+    .catch((err) => {
+      res.status(500).send({
+        errorMessage:
+          "Oops! Something went wrong. Our engineers have been informed!",
+      });
+      console.log(err);
+    });
 };
 
 let deleteTournament = (req, res) => {
@@ -54,7 +20,7 @@ let deleteTournament = (req, res) => {
   var id = parseInt(req.params.id);
   dbInstance
     .delete_tournament([id])
-    .then((post) => res.status(200).send(post))
+    .then((tournament) => res.status(200).send(tournament))
     .catch((err) => {
       res.status(500).send({
         errorMessage:
