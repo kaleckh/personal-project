@@ -1,0 +1,1 @@
+delete from tournament where id = $1;

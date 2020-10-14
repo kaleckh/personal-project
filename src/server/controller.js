@@ -53,7 +53,7 @@ let deleteTournament = (req, res) => {
   const dbInstance = req.app.get("db");
   var id = parseInt(req.params.id);
   dbInstance
-    .delete_post([id])
+    .delete_tournament([id])
     .then((post) => res.status(200).send(post))
     .catch((err) => {
       res.status(500).send({
