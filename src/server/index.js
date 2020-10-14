@@ -3,7 +3,7 @@ const express = require("express");
 const massive = require("massive")
 const app = express();
 app.use(express.json())
-var {getAll, createTournament, deleteTournament, createUser, updateTournament} = require("./controller")
+var {getAll, createTournament, deleteTournament, createUser, updateTournament, login} = require("./controller")
 const { PORT = 3001, CONNECTION_STRING } = process.env;
 const cors = require("cors");
 app.use(cors())
@@ -26,6 +26,8 @@ app.get("/test", (req, res) => {
         test: "test"
     })
 })
+
+app.post("/login", login);
 
 app.get("/tournaments", getAll);
 app.post("/tournaments", createTournament)
