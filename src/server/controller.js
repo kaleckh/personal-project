@@ -62,17 +62,13 @@ let createTournament = (req, res) => {
   res.json(body);
 };
 
-let createUser = (req, res) => {
-  const dbInstance = req.app.get("db");
-  const body = req.body;
-  res.json(body);
-};
+
 let updateTournament = (req, res) => {
   const dbInstance = req.app.get("db");
   const body = req.body;
   res.json(body);
 };
-var authorization = (req, res) => {
+var createUser = (req, res) => {
   var { username, password } = req.body;
 
   bcrypt.genSalt(10, function (err, salt) {
