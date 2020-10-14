@@ -1,5 +1,4 @@
-const bcrypt = require("bcrypt")
-
+const bcrypt = require("bcrypt");
 
 var mock = [
   {
@@ -52,16 +51,18 @@ let getAll = (req, res) => {
 
 let deleteTournament = (req, res) => {
   const dbInstance = req.app.get("db");
-  res.json({});
+  var id = parseInt(req.params.id);
+  dbInstance
+    .delete_post([id])
+    .then((post) => res.status(200).send(post))
+    .catch((err) => {
+      res.status(500).send({
+        errorMessage:
+          "Oops! Something went wrong. Our engineers have been informed!",
+      });
+      console.log(err);
+    });
 };
-
-let createTournament = (req, res) => {
-  const dbInstance = req.app.get("db");
-  const body = req.body;
-  mock.push(body);
-  res.json(body);
-};
-
 
 let updateTournament = (req, res) => {
   const dbInstance = req.app.get("db");
@@ -82,6 +83,21 @@ var createUser = (req, res) => {
     });
   });
 };
+let createTournament = (req, res) => {
+  const dbInstance = req.app.get("db");
+
+  var body = req.body;
+  dbInstance
+    .create_tournament([body.gameType, body.teameName, body.date])
+    .then((tournament) => res.status(200).send(tournament))
+    .catch((err) => {
+      res.status(500).send({
+        errorMessage:
+          "Oops! Something went wrong. Our engineers have been informed!",
+      });
+      console.log(err);
+    });
+};
 var login = (req, res) => {
   var { username, password } = req.body;
   var dbInstance = req.app.get("db");
@@ -95,12 +111,12 @@ var login = (req, res) => {
       });
     }
   });
-}
+};
 module.exports = {
   getAll,
   createTournament,
   deleteTournament,
   createUser,
   updateTournament,
-  login
+  login,
 };
