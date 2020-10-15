@@ -5,7 +5,22 @@ let getAll = (req, res) => {
 
   dbInstance
     .read_tournaments()
-    .then((tournaments) => res.status(200).send(tournaments))
+    .then((tournaments) => {
+      let result = tournaments.reduce((acc, curr) => {
+        if (acc[curr.tournamentid]) {
+          acc[curr.tournamentid].teamName.push(curr.name);
+        } else {
+          acc[curr.tournamentid] = {
+            id: curr.tournamentid,
+            type: curr.type,
+            teamName: [curr.name],
+          };
+        }
+
+        return acc;
+      }, {});
+      res.status(200).send(Object.values(result));
+    })
     .catch((err) => {
       res.status(500).send({
         errorMessage:
@@ -29,7 +44,6 @@ let deleteTournament = (req, res) => {
       console.log(err);
     });
 };
-
 
 var createUser = (req, res) => {
   var { username, password } = req.body;
@@ -65,7 +79,7 @@ let updateTournament = (req, res) => {
   var { type, date } = req.body;
   var id = parseInt(req.params.id);
   dbInstance
-    .update_tournament([ type, date, id])
+    .update_tournament([type, date, id])
     .then((tournament) => res.status(200).send(tournament[0]))
     .catch((err) => {
       res.status(500).send({

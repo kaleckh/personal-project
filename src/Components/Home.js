@@ -49,13 +49,13 @@ class Home extends Component {
           </div>
 
           <div className="gridContainer">
-            {this.props.tournaments.map((tournament, index) => {
+            {this.props.tournaments.map((tournament) => {
               return (
                 <div className="gridItem">
                   <div
                     className="link"
                     onClick={() => {
-                      this.props.history.push(`/tournament/${index}`);
+                      this.props.history.push(`/tournament/${tournament.id}`);
                     }}
                   >
                     <div className="type">
@@ -72,7 +72,6 @@ class Home extends Component {
                         method: "delete",
                         url: `http://localhost:3001/tournaments/${tournament.id}`,
                       }).then((res) => {
-                        
                         this.props.deleteTournament(tournament.id);
                       });
                     }}
