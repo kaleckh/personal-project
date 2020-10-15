@@ -1,12 +1,10 @@
-const UPDATE_USER = "UPDATE_USER";
 const CREATE_POST = "CREATE_POST";
 const CREATE_TOURNAMENT = "CREATE_TOURNAMENT";
 const UPDATE_TOURNAMENTS = "UPDATE_TOURNAMENTS";
 const DELETE_TOURNAMENT = "DELETE_TOURNAMENT";
-const CREATE_USER = "CREATE_USER";
+
 const UPDATE_TOURNAMENT = "UPDATE_TOURNAMENT";
 var initialState = {
-  username: "kaleck",
   tournaments: [],
 };
 export default function reducer(state = initialState, action) {
@@ -19,62 +17,37 @@ export default function reducer(state = initialState, action) {
         tournaments: tournaments,
       };
 
-    case CREATE_USER:
-      return {
-        ...state,
-        id: action.payload.id,
-        username: action.payload.username,
-      };
-    case CREATE_POST:
-      return {
-        ...state,
-        posts: [...state.posts, action.payload.post],
-      };
     case UPDATE_TOURNAMENTS:
       return {
         ...state,
         tournaments: action.payload.tournaments,
       };
     case UPDATE_TOURNAMENT:
-      
-      let tournament = action.payload.tournament
-      let ts = state.tournaments
+      let tournament = action.payload.tournament;
+      let ts = state.tournaments;
       return {
         ...state,
         tournaments: ts.map((t, index) => {
-      
-
-          if(tournament.id == index) {
-            return tournament 
+          if (tournament.id == index) {
+            return tournament;
           } else {
-            return t
+            return t;
           }
-        })
-
-
-      }
+        }),
+      };
     case DELETE_TOURNAMENT:
       let tournamentss = [...state.tournaments];
-      tournamentss.splice(action.payload.tournamentIndex, 1);
+      var res = tournamentss.filter((tournament) => {
+        return tournament.id !== action.payload.tournament.id;
+      });
 
       return {
         ...state,
-        tournaments: tournamentss,
+        tournaments: res,
       };
     default:
       return state;
   }
-}
-
-function updateUser(id, username, profilePic) {
-  return {
-    type: UPDATE_USER,
-    payload: {
-      id: id,
-      username: username,
-      profilePic: profilePic,
-    },
-  };
 }
 
 function createTournament(tournament) {
@@ -98,30 +71,21 @@ function updateTournament(tournament) {
     type: UPDATE_TOURNAMENT,
     payload: {
       tournament: tournament,
-    
     },
   };
 }
-function deleteTournament(tournamentIndex) {
+function deleteTournament(tournamentId) {
   return {
     type: DELETE_TOURNAMENT,
     payload: {
-      tournamentIndex: tournamentIndex,
+      tournamentId: tournamentId,
     },
   };
 }
-function createUser(username, id) {
-  return {
-    type: CREATE_USER,
-    payload: { username, id },
-  };
-}
+
 export {
-  updateUser,
   createTournament,
   updateTournaments,
   deleteTournament,
-  createUser,
   updateTournament,
 };
-

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 import Popup from "./Popup";
 import axios from "axios"
-import {createUser} from "../ducks/reducer"
+import {createUser} from "../ducks/user"
 import {connect} from "react-redux"
 
 class Login extends Component {

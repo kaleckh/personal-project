@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { updateTournament } from "../ducks/reducer";
+import { updateTournament } from "../ducks/tournaments";
 
 class UpdateTournament extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class UpdateTournament extends Component {
 }
 function mapStateToProps(state) {
   return {
-    tournaments: state.tournaments,
+    tournaments: state.tournaments.tournaments,
   };
 }
 const mapDispatchToProps = {

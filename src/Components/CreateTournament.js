@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createTournament } from "../ducks/reducer";
+import { createTournament } from "../ducks/tournaments";
 import "./Createtournament.css";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ function CreateTournament({ history }) {
   let [type, setType] = useState();
   let [date, setDate] = useState();
   let dispatch = useDispatch();
-  let username = useSelector((state) => state.username);
+  let username = useSelector((state) => state.user.username);
   return (
     <body>
       {username}

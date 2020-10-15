@@ -1,0 +1,1 @@
+ update tournament set type = $1, date = $2  where id= $3 returning type, date;

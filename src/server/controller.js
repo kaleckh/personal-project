@@ -30,11 +30,7 @@ let deleteTournament = (req, res) => {
     });
 };
 
-let updateTournament = (req, res) => {
-  const dbInstance = req.app.get("db");
-  const body = req.body;
-  res.json(body);
-};
+
 var createUser = (req, res) => {
   var { username, password } = req.body;
 
@@ -56,6 +52,21 @@ let createTournament = (req, res) => {
   dbInstance
     .create_tournament([body.type, body.date])
     .then((tournament) => res.status(200).send(tournament))
+    .catch((err) => {
+      res.status(500).send({
+        errorMessage:
+          "Oops! Something went wrong. Our engineers have been informed!",
+      });
+      console.log(err);
+    });
+};
+let updateTournament = (req, res) => {
+  const dbInstance = req.app.get("db");
+  var { type, date } = req.body;
+  var id = parseInt(req.params.id);
+  dbInstance
+    .update_tournament([ type, date, id])
+    .then((tournament) => res.status(200).send(tournament[0]))
     .catch((err) => {
       res.status(500).send({
         errorMessage:

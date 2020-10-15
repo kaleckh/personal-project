@@ -14,7 +14,7 @@ class Bracket extends Component {
 
 function mapStateToProps(state) {
     return {
-      tournaments: state.tournaments,
+      tournaments: state.tournaments.tournaments,
     };
   }
   
