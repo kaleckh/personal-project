@@ -75,7 +75,7 @@ class Login extends Component {
               onClick={() => {
                 axios({
                   method: "post",
-                  url: "http://localhost:3001/users",
+                  url: `${process.env.REACT_APP_SERVER_URL}/users`,
                   data: {
                     username: this.state.username,
                     password: this.state.password

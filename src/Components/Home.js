@@ -6,6 +6,7 @@ import { updateTournaments, deleteTournament } from "../ducks/tournaments";
 import Button from "./Button";
 class Home extends Component {
   constructor(props) {
+    console.log(process.env)
     super(props);
     this.state = {
       gameName: "",
@@ -20,7 +21,7 @@ class Home extends Component {
 
   componentDidMount() {
     axios({
-      url: "http://localhost:3001/tournaments",
+      url: `${process.env.REACT_APP_SERVER_URL}/tournaments`,
       method: "get",
     }).then((res) => {
       this.props.updateTournaments(res.data);
@@ -70,7 +71,7 @@ class Home extends Component {
                     onClick={() => {
                       axios({
                         method: "delete",
-                        url: `http://localhost:3001/tournaments/${tournament.id}`,
+                        url: `${process.env.REACT_APP_SERVER_URL}/tournaments/${tournament.id}`,
                       }).then((res) => {
                         this.props.deleteTournament(tournament.id);
                       });

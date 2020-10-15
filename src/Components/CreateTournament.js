@@ -37,7 +37,7 @@ function CreateTournament({ history }) {
             onClick={() => {
               axios({
                 method: "post",
-                url: "http://localhost:3001/tournaments",
+                url: `${process.env.REACT_APP_SERVER_URL}/tournaments`,
                 data: {
                   type: type,
                   teamName: teamName,

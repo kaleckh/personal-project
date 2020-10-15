@@ -46,7 +46,7 @@ class UpdateTournament extends Component {
               
             axios({
               method: "put",
-              url: `http://localhost:3001/tournaments/${this.props.match.params.id}`,
+              url: `${process.env.REACT_APP_SERVER_URL}/tournaments/${this.props.match.params.id}`,
               data: {
                 type: this.state.type,
                 teamName: this.state.teamName,
