@@ -14,8 +14,8 @@ class Home extends Component {
   createTournament = () => {
     this.props.history.push("/create");
   };
-  updateTournament = (index) => {
-    this.props.history.push(`/update/${index}`);
+  updateTournament = (tournamentId) => {
+    this.props.history.push(`/update/${tournamentId}`);
   };
 
   componentDidMount() {

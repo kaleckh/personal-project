@@ -9,7 +9,9 @@ class UpdateTournament extends Component {
     super(props);
   }
   render() {
-    var tournament = this.props.tournaments[this.props.match.params.id];
+    var tournament = this.props.tournaments.find((tournament) => {
+       return this.props.match.params.id == tournament.id
+    })
     return (
       <div>
         <input

@@ -27,8 +27,8 @@ export default function reducer(state = initialState, action) {
       let ts = state.tournaments;
       return {
         ...state,
-        tournaments: ts.map((t, index) => {
-          if (tournament.id == index) {
+        tournaments: ts.map((t) => {
+          if (tournament.id == t.id) {
             return tournament;
           } else {
             return t;
